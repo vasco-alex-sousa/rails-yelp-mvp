@@ -1,0 +1,32 @@
+<h1><%= @restaurant.name %></h1>
+
+<p><strong> Adress: </strong><%= @restaurant.address %></p>
+
+<p><strong> Category: </strong><%= @restaurant.category.capitalize %></p>
+
+<h2>Reviews</h2>
+
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li>
+      <p><%= review.content %></p>
+      <p><%= review.rating %>/5</p>
+    </li>
+  <% end %>
+</ul>
+
+<h3>Add a review</h3>
+
+<%= form_with(model: [@restaurant, @review], local: true) do |form| %>
+  <%= form.label :content %>
+  <%= form.text_field :content %>
+
+  <%= form.label :rating %>
+  <%= form.select :rating, (0..5) %>
+
+  <%= form.submit "Create Review" %>
+<% end %>
+
+<%= button_to "Delete Restaurant", @restaurant, method: :delete %>
+
+<%= link_to "Back to all restaurants", restaurants_path %>

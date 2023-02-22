@@ -1,0 +1,7 @@
+<%# app/views/restaurants/create.html.erb %>
+<% if @restaurant.persisted? %>
+  <p>New restaurant added!</p>
+  <%= link_to 'View Restaurant', restaurant_path(@restaurant) %>
+<% else %>
+  <p>There was an error adding the restaurant</p>
+<% end %>
